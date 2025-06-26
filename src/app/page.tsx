@@ -1,11 +1,15 @@
+// app/page.tsx
 'use client';
 
-import dynamic from 'next/dynamic';
 import { Canvas } from '@react-three/fiber';
 import { Loader } from '@react-three/drei';
 import Scene from '@/components/Scene';
+import CVPanel from '@/components/CVPanel';
+import { useState } from 'react';
 
 export default function Home() {
+  const [showCV, setShowCV] = useState(false);
+
   return (
     <>
       <Canvas
@@ -13,11 +17,12 @@ export default function Home() {
         camera={{ position: [0, 2, 8], fov: 60 }}
         style={{ height: '100vh', width: '100vw' }}
       >
-        {/* Suspense automatique via drei */}
-        <Scene />
+        <Scene setShowCV={setShowCV} />
       </Canvas>
 
-      {/* Loader trois/drei (barre d’avancement) */}
+      {/* Affichage de l’overlay en-dehors du Canvas */}
+      <CVPanel open={showCV} setOpen={setShowCV} />
+
       <Loader />
     </>
   );

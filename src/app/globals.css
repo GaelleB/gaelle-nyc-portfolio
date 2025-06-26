@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
 body {
-  @apply bg-nyc_gray text-white font-sans;
+  @apply text-white;
   overflow-x: hidden; /* pour le scroll horizontal custom */
 }
